@@ -1,0 +1,40 @@
+/* components/CityList/cityList.wxss */
+
+.citylist{
+  display: flex;
+  flex-direction: column;
+}
+.citylist .title{
+  padding: 5px 20px;
+  font-size: 16px;
+  background-color: #262626;
+  color: #fed213;
+  display: flex;
+  justify-content: space-between
+}
+
+.citylist .arrow{
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 10px solid #969696;
+  border-bottom: 8px solid transparent;
+  margin-top: 3px;
+  transform: rotate(90deg);
+  transition:all .2s;
+}
+.city-list{
+  padding: 15px 0 15px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.city-list .item{
+  padding: 2px 12px;
+  color: #000;
+  letter-spacing: 2px;
+  background: #fff;
+  border-radius: 5px; 
+  margin-right: 10px;
+  margin-bottom: 10px; 
+}

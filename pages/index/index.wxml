@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <dialog id='dialog' title='我是标题' content='恭喜你，学会了小程序组件' cancelText='知道了' confirm='谢谢你' bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent">
+  </dialog>
+  <!-- <button type="primary" bindtap="showDialog"> ClickMe! </button> -->
+  <image src='../../images/bg.png' class='bg'></image>
+  <view class='content-box'>
+    <view class='header-top'>
+      <view class='text'>中国
+        <text>34</text>个省区，
+        <text>661</text>个城市</view>
+      <view class='text'>你去过多少？</view>
+    </view>
+    <image src='../../images/map.png' class='map-img'></image>
+    <view class='start-btn' bindtap='start'>测一测</view>
+  </view>
+</view>

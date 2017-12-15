@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/select/select",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "测一测地图",
+    "navigationBarTextStyle":"white"
+  }
+}

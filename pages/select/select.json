@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "citylist": "../../components/CityList/cityList"
+  }
+}

@@ -1,0 +1,38 @@
+/**index.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+} 
+.content-box{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  align-items: center
+}
+.text{
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.text text{
+  font-size: 26px;
+  color: #ff9800;
+  margin: 0 10rpx;
+}
+.map-img{
+  width: 294px;
+  height: 247px;
+  margin-top: -50px
+}
+.start-btn{
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  background-color: rgba(57,58,63,0.8);
+  color: #ccc;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 50px;
+}

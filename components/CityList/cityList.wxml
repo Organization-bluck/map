@@ -1,0 +1,16 @@
+<!--components/CityList/cityList.wxml-->
+
+<view class='citylist'>
+  <block wx:for="{{dataList}}" wx:for-index="idx" wx:for-item="item"> 
+    <view class='title' bindtap='slideup()'>
+      <text>{{item.name}}</text>
+      <view class='arrow' animation="{{animationData}}"></view>
+    </view>
+    <view class='city-list' wx:if="{{isShow}}">
+      <block wx:for="{{item.city}}" wx:for-index="idx" wx:for-item="cityitem">
+        <view class='item' bindtap=''>{{ cityitem.name }}</view>
+      </block> 
+    </view>
+  </block>
+
+</view>
