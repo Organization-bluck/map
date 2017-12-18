@@ -4,10 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    dataList:{
-      type:Array,
-      value:[]
-    }
+    listData:{
+      type:Object,
+      value:{}
+    },
   },
   ready(){
     var animation = wx.createAnimation({
@@ -21,8 +21,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isShow:true,
-    animationData:{}
+    animationData:{},
+    isActive:0,
+    isShow: true
   },  
 
   /**
@@ -30,9 +31,11 @@ Component({
    */
   methods: {
     slideup(){
+      // this.triggerEvent('myevent',this.data.isShow)
       this.setData({
         isShow:!this.data.isShow
       })
+      // 动画
       if (!this.data.isShow){
         this.animation.rotate(0).step()
       }else{
@@ -43,5 +46,10 @@ Component({
         animationData: this.animation.export()
       })
     },
+    selectItem(event){
+      this.setData({
+        isActive: event.currentTarget.dataset.index 
+      })
+    }
   }
 })
