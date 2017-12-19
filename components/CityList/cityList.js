@@ -1,4 +1,5 @@
 // components/CityList/cityList.js
+const util = require('../../utils/util.js');
 Component({
   /**
    * 组件的属性列表
@@ -15,6 +16,11 @@ Component({
       timingFunction: 'ease',
     })
     this.animation = animation;
+    // console.log(this.data.listData.city.length)
+    var cityLength = this.data.listData.city
+    // console.log(cityLength)
+    var isActiveArr = new Array(cityLength.length).fill(false)
+    console.log(isActiveArr)
   },
 
   /**
@@ -22,8 +28,10 @@ Component({
    */
   data: {
     animationData:{},
-    isActive:0,
-    isShow: true
+    isShow: true,
+    isActiveArr: [],
+    arr: [],
+    currentIndex: null
   },  
 
   /**
@@ -46,10 +54,33 @@ Component({
         animationData: this.animation.export()
       })
     },
-    selectItem(event){
+    selectItem(event) {
+      var cid = event.currentTarget.dataset.id;
+      var cIndex = event.currentTarget.dataset.index;
       this.setData({
-        isActive: event.currentTarget.dataset.index 
+        currentIndex: cIndex
       })
-    }
+      console.log(this.data.isActiveArr)
+      this.data.isActiveArr[this.data.currentIndex] = !this.data.isActiveArr[this.data.currentIndex]
+
+      // console.log(this.data.isActiveArr)
+      this.setData({
+        isActiveArr: this.data.isActiveArr
+      })
+      var arr = this.data.arr;
+      if (arr.length > 0) {
+        // 判断是否在该数组中，有则删除，无则添加
+        if (util.contains(arr, cid)) {
+          // 删除当前元素在数组中
+          util.removeByValue(arr, cid)
+        } else {
+          arr.push(cid)
+        }
+      } else {
+        arr.push(cid);
+      }
+      // console.log(arr);
+      //wx.setStorageSync('selectdCity', arr)
+    },
   }
 })

@@ -5,13 +5,14 @@
     <view class='hotcity' bindtap='rotate'>热门城市</view>
     <view class='hotcity-list'>
       <block wx:for="{{hotCity}}" wx:for-index="idx" wx:for-item="item">
-        <view class='item {{isActive?"active":""}}' data-index='{{idx}}' bindtap='selectItem'>{{ item.name }}</view>
+        <view class='item {{isActiveArr[idx]?"active":""}}' data-id='{{item.id}}' data-index='{{idx}}' bindtap='selectItem'>{{ item.name }}</view>
       </block>
     </view>
   </view>
   <block wx:for="{{cityList}}" wx:for-index="idx" wx:for-item="item">
     <citylist list-data="{{item}}" bind:myevent="onMyEvent"></citylist>
   </block>
+  <view class='sub-btn' wx:if="{{cityList.length}}">提交</view>
   <scroll-view scroll-y>
 
   </scroll-view>

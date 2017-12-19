@@ -14,6 +14,27 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const contains = (arr, obj) => {
+  var i = arr.length;
+  while (i--) {
+    if (arr[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+}
+const removeByValue = (arr, val) => {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == val) {
+      arr.splice(i, 1);
+      break;
+    }
+  }
+}
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  contains,
+  removeByValue
 }
