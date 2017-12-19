@@ -8,19 +8,35 @@ App({
 
     // 登录
     wx.login({
+
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://www.yingshangyan.com/login',
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
+        wx.getUserInfo({
+            success: function (userResult) {
+                // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                if (res.code) {
+                    //发起网络请求
+                    var header = {};
+
+                    header['X-WX-Code'] = res.code;
+                    header['X-WX-Encrypted-Data'] = userResult.encryptedData;
+                    header['X-WX-IV'] = userResult.iv;
+                    wx.request({
+                        url: 'https://www.yingshangyan.com/wxapi/login',
+                        header: header,
+                        data: {
+                            code: res.code
+                        }
+                    })
+                } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
+                }
+            },
+
+            fail: function (userError) {
+                console.log('ERR_WX_GET_USER_INFO', '获取微信用户信息失败，请检查网络状态');
+            },
+        });
+
       }
     })
     // 获取用户信息
