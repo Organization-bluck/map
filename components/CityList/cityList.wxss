@@ -10,7 +10,8 @@
   background-color: #262626;
   color: #fed213;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .title>.arrow{

@@ -32,3 +32,13 @@
   background: #fed213;
   color:#fff;
 }
+.sub-btn{
+  width: 60%;
+  margin: 20px auto;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+}
