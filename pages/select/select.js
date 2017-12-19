@@ -8,6 +8,10 @@ Page({
     arr: [],
     currentIndex:null
   },
+  onReady() {
+    //获得dialog组件
+    this.dialog = this.selectComponent("#dialog");
+  },
   onLoad() {
     wx.request({
       url: 'https://www.yingshangyan.com/api/map/getAllCity',
@@ -24,12 +28,6 @@ Page({
           
         }
       }
-    })
-  },
-  onMyEvent(e) {
-    console.log(e.detail)
-    this.setData({
-      isShow: !e.detail
     })
   },
   selectItem(event) {
@@ -57,23 +55,24 @@ Page({
       arr.push(cid);
     }
     // console.log(arr);
-    wx.setStorageSync('selectdCity',arr)
+    wx.setStorageSync('HotCity',arr)
   },
-  // _contains(arr, obj) {
-  //   var i = arr.length;
-  //   while (i--) {
-  //     if (arr[i] === obj) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // },
-  // _removeByValue(arr, val) {
-  //   for (var i = 0; i < arr.length; i++) {
-  //     if (arr[i] == val) {
-  //       arr.splice(i, 1);
-  //       break;
-  //     }
-  //   }
-  // }
+  subfn(){
+    this.dialog.showDialog();
+  },
+  //取消事件
+  _cancelEvent() {
+    console.log('你点击了取消');
+    this.dialog.hideDialog();
+  },
+  //确认事件
+  _confirmEvent() {
+    console.log('你点击了确定');
+    //打印热门城市的选项
+    console.log(wx.getStorageSync('HotCity'));
+
+    //打印其他城市
+    // ..
+    this.dialog.hideDialog();
+  }
 })

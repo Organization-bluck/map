@@ -16,11 +16,13 @@ Component({
       timingFunction: 'ease',
     })
     this.animation = animation;
-    // console.log(this.data.listData.city.length)
-    var cityLength = this.data.listData.city
-    // console.log(cityLength)
+   
+    var cityLength = this.data.listData.city;
     var isActiveArr = new Array(cityLength.length).fill(false)
     console.log(isActiveArr)
+    this.setData({
+      isActiveArr
+    })
   },
 
   /**
@@ -39,7 +41,6 @@ Component({
    */
   methods: {
     slideup(){
-      // this.triggerEvent('myevent',this.data.isShow)
       this.setData({
         isShow:!this.data.isShow
       })
@@ -57,13 +58,13 @@ Component({
     selectItem(event) {
       var cid = event.currentTarget.dataset.id;
       var cIndex = event.currentTarget.dataset.index;
+
       this.setData({
         currentIndex: cIndex
       })
-      console.log(this.data.isActiveArr)
+      
       this.data.isActiveArr[this.data.currentIndex] = !this.data.isActiveArr[this.data.currentIndex]
-
-      // console.log(this.data.isActiveArr)
+      console.log(this.data.isActiveArr)
       this.setData({
         isActiveArr: this.data.isActiveArr
       })
@@ -79,8 +80,8 @@ Component({
       } else {
         arr.push(cid);
       }
-      // console.log(arr);
-      //wx.setStorageSync('selectdCity', arr)
+      console.log(arr);
+      wx.setStorageSync('AllCity' + this.data.listData.name, arr)
     },
   }
 })

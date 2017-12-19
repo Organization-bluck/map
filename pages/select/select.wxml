@@ -10,11 +10,13 @@
     </view>
   </view>
   <block wx:for="{{cityList}}" wx:for-index="idx" wx:for-item="item">
-    <citylist list-data="{{item}}" bind:myevent="onMyEvent"></citylist>
+    <citylist list-data="{{item}}"></citylist>
   </block>
-  <view class='sub-btn' wx:if="{{cityList.length}}">提交</view>
+  <view class='sub-btn' wx:if="{{cityList.length}}" bindtap='subfn'>提交</view>
   <scroll-view scroll-y>
 
   </scroll-view>
+  <!-- 提示框 -->
+  <dialog id='dialog' title='提示' content='确定您已经选择完毕了吗？' cancelText='再想想' confirm='就这些' bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent"></dialog>
 
 </view>
