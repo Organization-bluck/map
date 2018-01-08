@@ -13,5 +13,6 @@
     </view>
     <image src='../../images/map.png' class='map-img'></image>
     <view class='start-btn' bindtap='start'>测一测</view>
+    <view class='clearLocal' bindtap='clearLocal'>清本地缓存</view>
   </view>
 </view>

@@ -1,6 +1,6 @@
 {
 	"description": "项目配置文件。",
-  "qcloudRoot": "./images",
+	"qcloudRoot": "./images",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -10,7 +10,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.7.1",
-	"appid": "wx5d2a9650d1ab4747",
+	"appid": "wx49ab514a4a6590da",
 	"projectname": "xcx-map",
 	"condition": {
 		"search": {

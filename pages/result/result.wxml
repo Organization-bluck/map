@@ -1,2 +1,2 @@
 <!-- 指向微信公众平台首页的web-view -->
-<web-view src="https://www.yingshangyan.com/wap/map/index.html"></web-view>
+<web-view src="{{url}}"></web-view>

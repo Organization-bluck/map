@@ -8,7 +8,7 @@ Page({
     isActiveArr: [],
     arr: [],
     currentIndex:null,
-    hiddenLoading:false
+    hiddenLoading:false,
   },
   onReady() {
     //获得dialog组件
@@ -41,24 +41,26 @@ Page({
     })
     this.data.isActiveArr[this.data.currentIndex] = !this.data.isActiveArr[this.data.currentIndex]
 
-    console.log(this.data.isActiveArr)
+    // console.log(this.data.isActiveArr)
     this.setData({
       isActiveArr: this.data.isActiveArr
     })
     var arr = this.data.arr;
-    if (arr.length > 0) {
+    let cityArr = wx.getStorageSync('__cityArr__') || [];
+    if (cityArr.length > 0) {
       // 判断是否在该数组中，有则删除，无则添加
-      if (util.contains(arr, cid)) {
+      if (util.contains(cityArr, cid)) {
         // 删除当前元素在数组中
-        util.removeByValue(arr,cid)
+        util.removeByValue(cityArr,cid)
       } else {
-        arr.push(cid)
+        cityArr.push(cid)
       }
     } else {
-      arr.push(cid);
+      cityArr.push(cid);
     }
     // console.log(arr);
-    wx.setStorageSync('HotCity',arr)
+    
+    wx.setStorageSync('__cityArr__', cityArr )
   },
   subfn(){
     this.dialog.showDialog();
@@ -72,10 +74,21 @@ Page({
   _confirmEvent() {
     console.log('你点击了确定');
     //打印热门城市的选项
-    console.log(wx.getStorageSync('HotCity'));
-
+    console.log(wx.getStorageSync('__cityArr__'));
+    let params = wx.getStorageSync('__cityArr__');
+    let userid = app.globalData.userId
+    wx.request({
+      url: 'https://www.yingshangyan.com/api/Map/updateUserCity',
+      data:{
+        user_id: app.globalData.userId,
+        city_id: params
+      },
+      success(res){
+        console.log(res)
+      }
+    })
     wx.navigateTo({
-      url: '../result/result',
+      url: `../result/result?user_id=${userid}`,
     })
     //打印其他城市
     // ..

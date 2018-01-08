@@ -1,18 +1,19 @@
 <!--pages/select/select.wxml-->
 <loading hidden="{{hiddenLoading}}">数据加载中</loading>
 <view class='container'>
-<image src='../../images/bg.png' class='bg'></image>
+  <image src='../../images/bg.png' class='bg'></image>
   <view class='header'>
     <view class='hotcity' bindtap='rotate'>热门城市</view>
     <view class='hotcity-list'>
-      <block wx:for="{{hotCity}}" wx:for-index="idx" wx:for-item="item">
-        <view class='item {{isActiveArr[idx]?"active":""}}' data-id='{{item.id}}' data-index='{{idx}}' bindtap='selectItem'>{{ item.name }}</view>
+      <block wx:for="{{hotCity}}" wx:key="idx" wx:for-index="idx" wx:for-item="item">
+        <view class='item {{ isActiveArr[idx] ?"active":""}}' data-id='{{item.id}}' data-index='{{idx}}' bindtap='selectItem'>{{ item.name }}</view>
       </block>
     </view>
   </view>
-  <block wx:for="{{cityList}}" wx:for-index="idx" wx:for-item="item">
-    <citylist list-data="{{item}}"></citylist>
+  <block wx:for="{{cityList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item">
+     <citylist list-data="{{item}}"></citylist> 
   </block>
+
   <view class='sub-btn' wx:if="{{cityList.length}}" bindtap='subfn'>提交</view>
 
   <!-- 提示框 -->

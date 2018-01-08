@@ -17,12 +17,13 @@ Component({
     })
     this.animation = animation;
    
-    var cityLength = this.data.listData.city;
-    var isActiveArr = new Array(cityLength.length).fill(false)
-    console.log(isActiveArr)
-    this.setData({
-      isActiveArr
-    })
+    if (this.data.listData.city){
+      var cityLength = this.data.listData.city;
+      var isActiveArr = new Array(cityLength.length).fill(false)
+      this.setData({
+        isActiveArr
+      })
+    }
   },
 
   /**
@@ -64,24 +65,26 @@ Component({
       })
       
       this.data.isActiveArr[this.data.currentIndex] = !this.data.isActiveArr[this.data.currentIndex]
-      console.log(this.data.isActiveArr)
+      // console.log(this.data.isActiveArr)
       this.setData({
         isActiveArr: this.data.isActiveArr
       })
       var arr = this.data.arr;
-      if (arr.length > 0) {
+      let cityArr = wx.getStorageSync('__cityArr__') || [];
+      if (cityArr.length > 0) {
         // 判断是否在该数组中，有则删除，无则添加
-        if (util.contains(arr, cid)) {
+        if (util.contains(cityArr, cid)) {
           // 删除当前元素在数组中
-          util.removeByValue(arr, cid)
+          util.removeByValue(cityArr, cid)
         } else {
-          arr.push(cid)
+          cityArr.push(cid)
         }
       } else {
-        arr.push(cid);
+        cityArr.push(cid);
       }
-      console.log(arr);
-      wx.setStorageSync('AllCity' + this.data.listData.name, arr)
+      // console.log(arr);
+
+      wx.setStorageSync('__cityArr__', cityArr)
     },
   }
 })

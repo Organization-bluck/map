@@ -19,6 +19,12 @@ Page({
     //获得dialog组件
     this.dialog = this.selectComponent("#dialog");
   },
+  clearLocal(){
+    wx.clearStorageSync()
+    wx.showToast({
+      title: '清除成功',
+    })
+  },
   onLoad: function () {
     
   },
