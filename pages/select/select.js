@@ -7,7 +7,8 @@ Page({
     animationData: {},
     isActiveArr: [],
     arr: [],
-    currentIndex:null
+    currentIndex:null,
+    hiddenLoading:false
   },
   onReady() {
     //获得dialog组件
@@ -24,7 +25,8 @@ Page({
           this.setData({
             hotCity: res.data.data.hot_list,
             cityList: res.data.data.list,
-            isActiveArr
+            isActiveArr,
+            hiddenLoading:true
           })
           
         }
@@ -72,6 +74,9 @@ Page({
     //打印热门城市的选项
     console.log(wx.getStorageSync('HotCity'));
 
+    wx.navigateTo({
+      url: '../result/result',
+    })
     //打印其他城市
     // ..
     this.dialog.hideDialog();
